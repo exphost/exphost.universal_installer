@@ -1,0 +1,7 @@
+- name: "install app {{app.key}}"
+  include_role:
+    name: "exphost.{{app_type}}"
+  loop: "{{app.value|list}}"
+  loop_control:
+    loop_var: app_type
+  when: app.value[app_type]['enabled']|default(False)
