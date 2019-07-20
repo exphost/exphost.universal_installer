@@ -4,4 +4,4 @@
   loop: "{{app.value|list}}"
   loop_control:
     loop_var: app_type
-  when: app.value[app_type]['enabled']|default(False)
+  when: app.value[app_type]['enabled']|default(False) and (single_app is not defined or single_app == app.key)
